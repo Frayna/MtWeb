@@ -14,7 +14,7 @@ class App extends Component {
             <Router>
                 <div className="container">
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <a href={'/'} className="navbar-brand">React Express App</a>
+                        <a href={'/'} className="navbar-brand">MtF HRT</a>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
@@ -24,26 +24,26 @@ class App extends Component {
                                     <Link to={'/create'} className="nav-link">Chirurgies</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/index'} className="nav-link">Hormones</Link>
+                                    <Link to={'/edit'} className="nav-link">Hormones</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/admin'} className="nav-link">Administratif</Link>
-                                </li>
+                                    <Link to={'/admin'} className="nav-link" data-toggle="dropdown">Administratif</Link>
+                                 </li>
                                 <li className="nav-item">
                                     <Link to={'/bdd'} className="nav-link">Base de Données</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/ressources'} className="nav-link">Ressources</Link>
+                                    <Link to={'/ressource'} className="nav-link">Ressources</Link>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                     <Switch>
                         <Route exact path='/create' component={CreateComponent} />
-                        <Route path='/edit/:id' component={EditComponent} />
+                        <Route path='/edit' component={EditComponent} />
                         <Route path='/admin' component={AdminComponent} />
                         <Route path='/bdd' component={BDDComponent} />
-                        <Route path='/ressources' component={RessourcesComponent} />
+                        <Route path='/ressource' component={RessourcesComponent} />
                         <Route path='/index' component={IndexComponent} />
                     </Switch>
                 </div>
