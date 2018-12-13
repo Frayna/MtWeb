@@ -6,31 +6,29 @@ export default class AjoutProduitComponent extends Component {
     render() {
         return (
             <div>
-        <h3 style={{marginBottom: 15}}>Ajouter nouveau produit</h3>
-        <form style={{marginLeft: 10}}>
-            <div className="form-group">
-                <label>Nom du Produit</label>
-                <input type="text" className="form-control"/>
+                <form style={{marginLeft: 10}}>
+                    <div className="form-group">
+                        <label>Nom du Produit</label>
+                        <input type="text" className="form-control"/>
+                    </div>
+                    <div className="form-group">
+                        <label>Descriptif</label>
+                        <input type="text" className="form-control"/>
+                    </div>
+                    <div className="btn-group">
+                        <div className="form-group">
+                            <Link to={'/edit'}>
+                                <input type="submit" value="Valider" className="btn btn-success"/>
+                            </Link>
+                        </div>
+                        <div className="form-group">
+                            <Link to={'/edit'}>
+                                <input type="submit" value="Annuler" className="btn btn-danger"/>
+                            </Link>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div className="form-group">
-                <label>Descriptif</label>
-                <input type="text" className="form-control"/>
-            </div>
-            <div className="row">
-            <div className="form-group col-sm-6">
-                <Link to={'/edit'}>
-                <input type="submit" value="Valider" className="btn btn-primary"/>
-                </Link>
-            </div>
-            <div className="form-group col-sm-6">
-                <Link to={'/edit'}>
-                    <input type="submit" value="Annuler" className="btn btn-primary"/>
-                </Link>
-            </div>
-            </div>
-        </form>
-            </div>
-
-    )
+        )
     }
 }
