@@ -44,11 +44,11 @@ export default class EditComponent extends Component {
             </div>
                 <Router>
                     <div>
-                        <btn className="btn btn-lg btn-dark">
-                            <Link to={'/addprod'} className="text-white-50">Ajouter</Link>
-                        </btn>
+                        <Link to={'/addprod'}>
+                                <btn className="btn btn-lg btn-dark">Ajouter</btn>
+                        </Link>
                         <Switch>
-                        <Route path='/addprod' component={AjoutProduitComponent} />
+                            <Route path='/addprod' component={AjoutProduitComponent} />
                         </Switch>
                     </div>
                 </Router>
