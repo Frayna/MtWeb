@@ -1,8 +1,6 @@
 
 import React, { Component } from 'react';
 import AjoutProduitComponent from "./AjoutProduitComponent";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-
 
 export default class EditComponent extends Component {
     showAdd = false;
@@ -32,18 +30,21 @@ export default class EditComponent extends Component {
         ],
         addShow : true
     };
-handleshow = (id) =>{
-    console.log(id);
-    this.state.produits[id].show = !this.state.produits[id].show;
-    this.setState({showProd : this.state.produits[id]})
+
+    event = {
+	    handleshow : (id) => {
+		    console.log(id);
+		    this.state.produits[id].show = !this.state.produits[id].show;
+		    this.setState({showProd: !this.state.produits[id].show})
 //    prod = prod !== true;
 //    prod = true ? false : true;
 //     console.log(prod)
-}
-handleAdd = () =>{
-    this.state.addShow = !this.state.addShow;
-    this.setState({addShow : this.state.addShow})
-}
+	    },
+	    handleAdd : () => {
+//    this.state.addShow = !this.state.addShow;
+		    this.setState({addShow: !this.state.addShow})
+	    }
+    }
     render() {
         return (
          <div>
@@ -64,7 +65,7 @@ handleAdd = () =>{
                     )}
                 </ul>
             </div>
-                <button onClick={this.handleAdd} className="btn btn-outline-primary" style={{float:"right"}}>+</button>
+                <button onClick={this.event.handleAdd} className="btn btn-outline-primary" style={{float:"right"}}>+</button>
                 <div hidden={this.state.addShow}>
                     <AjoutProduitComponent/>
                 </div>
