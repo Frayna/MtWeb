@@ -48,7 +48,7 @@ class App extends Component {
                         <Route path='/admin' component={AdminComponent} />
                         <Route path='/bdd' component={BDDComponent} />
                         <Route path='/ressource' component={RessourcesComponent} />
-                        <Route path='/index' component={IndexComponent} />
+                        <Route path='/' component={IndexComponent} />
 	                    <Route path='/debug' component={DebugComponent} />
                     </Switch>
                 </div>

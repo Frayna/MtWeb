@@ -34,6 +34,7 @@ export default class EditComponent extends Component {
 	handleshow = (id) => {
 		console.log(id);
 		this.state.produits[id].show = !this.state.produits[id].show;
+		
 		this.setState({show: !this.state.produits[id].show})
 //    prod = prod !== true;
 //    prod = true ? false : true;
