@@ -7,6 +7,7 @@ import IndexComponent from './components/IndexComponent';
 import AdminComponent from "./components/AdminComponent";
 import BDDComponent from "./components/BDDComponent";
 import RessourcesComponent from "./components/RessourcesComponent";
+import DebugComponent from "./components/DebugComponent";
 
 class App extends Component {
     render() {
@@ -35,6 +36,9 @@ class App extends Component {
                                 <li className="nav-item">
                                     <Link to={'/ressource'} className="nav-link">Ressources</Link>
                                 </li>
+	                            <li className="nav-item">
+		                            <Link to={'/debug'} className="nav-link">Debug</Link>
+	                            </li>
                             </ul>
                         </div>
                     </nav>
@@ -45,6 +49,7 @@ class App extends Component {
                         <Route path='/bdd' component={BDDComponent} />
                         <Route path='/ressource' component={RessourcesComponent} />
                         <Route path='/index' component={IndexComponent} />
+	                    <Route path='/debug' component={DebugComponent} />
                     </Switch>
                 </div>
             </Router>
