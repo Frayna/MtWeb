@@ -19,7 +19,7 @@ class App extends Component {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
-                                    <Link to={'/'} className="nav-link">News / Infos</Link>
+                                    <Link to={'/index'} className="nav-link">News / Infos</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to={'/create'} className="nav-link">Chirurgies</Link>
@@ -43,12 +43,12 @@ class App extends Component {
                         </div>
                     </nav>
                     <Switch>
-                        <Route exact path='/create' component={CreateComponent} />
+                        <Route path='/create' component={CreateComponent} />
                         <Route path='/edit' component={EditComponent} />
                         <Route path='/admin' component={AdminComponent} />
                         <Route path='/bdd' component={BDDComponent} />
                         <Route path='/ressource' component={RessourcesComponent} />
-                        <Route path='/' component={IndexComponent} />
+                        <Route path='/index' component={IndexComponent} />
 	                    <Route path='/debug' component={DebugComponent} />
                     </Switch>
                 </div>
