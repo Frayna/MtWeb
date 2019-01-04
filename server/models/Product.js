@@ -5,12 +5,18 @@ var Schema = mongoose.Schema;
 
 // Define collection and schema for Items
 var Product = new Schema({
-	name: {
-		type: String
-	},
-	desc: {
-		type: String
-	}
+	name: {type: String},
+	img: {type: String},
+	desc: {type: String},
+	molecule: {type: String},
+	principe: {type: String},
+	voie: {type: Number},
+	dangerosite: {type: Number},
+	vente: {type: Boolean},
+	venteFR: {type: Boolean},
+	wiki: {type: Array},
+	descFull: {type: String}
+
 },{
 	collection: 'products'
 });

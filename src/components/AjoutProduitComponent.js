@@ -1,6 +1,32 @@
 import React, {Component} from "react";
 import axios from 'axios';
+
 export default class AjoutProduitComponent extends Component {
+
+	DangerEnum = {
+		Safe: 0,
+		Douteux: 1,
+		Dangereux: 2
+	};
+	VoieEnum = {
+		Transdermique: 0,
+		Orale: 1,
+		IntraMusculaire: 2
+	};
+
+	state = {
+		name: "",
+		img: "",
+		desc: "",
+		molecule: "",
+		principe: "",
+		voie: 0,
+		dangerosite: 0,
+		vente: false,
+		venteFR: false,
+		wiki: [],
+		descFull: ""
+	}
 
 	// state = {
 	// 	nom:"androcur",

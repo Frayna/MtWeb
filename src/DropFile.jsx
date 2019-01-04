@@ -127,6 +127,14 @@
 			<input type="text" value={this.state.pactif} className="form-control"/>
 		</div>
 		<div className="form-group">
+			<label>Voie</label>
+			<select value={this.state.voie}>
+				<option>Transdermique</option>
+				<option>Comprimés</option>
+				<option>Injection</option>
+			</select>
+		</div>
+		<div className="form-group">
 			<label>Dangerosité</label>
 			<select value={this.state.danger}>
 				<option>Safe</option>
