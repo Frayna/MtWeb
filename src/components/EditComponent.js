@@ -1,44 +1,46 @@
 
 import React, { Component } from 'react';
 import AjoutProduitComponent from "./AjoutProduitComponent";
+import axios from "axios";
 
 export default class EditComponent extends Component {
 	showAdd = false;
-
+	constructor(props) {
+		super(props);
+		this.state = {
+			products: [],
+			prodLongDesc : [],
+			addShow : true
+		}
+	}
 	// constructor()
 	// {
 	//     super();
 	//     this.handleshow = this.handleshow().bind(this);
 	// }
 	// TODO Passer les produits en sous components
-	state = {
-		produits : [
-			{
-				nom:"androcur",
-				desc: "Anti-androgene",
-				show: false,
-				img: "https://picsum.photos/200",
-				fullDesc: "Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone Bloqueur de testosterone "
-			},
-			{
-				nom:"progynon",
-				desc: "Estradiol",
-				show:true,
-				img: "https://picsum.photos/200",
-				fullDesc: "Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection Estradiol Valerate injection "
-			}
-		],
-		addShow : true
-	};
+
+	componentDidMount(){
+		axios.get('http://localhost:4200/product/list')
+			.then(response => {
+				this.setState({ products: response.data });
+				this.setState({prodLongDesc: [this.state.products.length]})
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+	}
 
 	handleshow = (id) => {
-		console.log(id);
-		this.state.produits[id].show = !this.state.produits[id].show;
-		
-		this.setState({show: !this.state.produits[id].show})
-//    prod = prod !== true;
-//    prod = true ? false : true;
-//     console.log(prod)
+		let newArray = this.state.prodLongDesc.slice();
+		if(newArray[id]){
+			newArray[id] = !newArray[id];
+			this.setState({prodLongDesc: newArray});
+		}
+		else {
+			newArray[id] = true;
+			this.setState({prodLongDesc: newArray});
+		}
 	};
 
 	handleAdd = () => {
@@ -46,12 +48,18 @@ export default class EditComponent extends Component {
 		this.setState({addShow: !this.state.addShow})
 	};
 
+	showProd = (prod, key) => {
+	if(this.state.prodLongDesc[key]){
 
+	}
+
+	}
 	render() {
 		return (
 			<div>
 				<div style={{marginTop: 50}}>
 					<ul className="list-group">
+						{this.showProd()}
 						{this.state.produits.map((prod , key) =>
 							<li key={prod.nom} className="list-group-item">
 								<div className="row">
@@ -60,7 +68,7 @@ export default class EditComponent extends Component {
 									<span style={{color:"#888", paddingLeft:2, textAlign:"right"}} className="col-sm-1"><button onClick={() => this.handleshow(key)}>{'\u25bc'}</button></span>
 								</div>
 								<div hidden={prod.show} className="row" style={{marginTop:20, paddingTop:10, borderTopStyle:"solid", borderTopWidth:1, borderTopColor:"#D2D2D2"}}>
-									<img src={prod.img} className="col-sm-3"/>
+									<img alt="" src={prod.img} className="col-sm-3"/>
 									<p className="col-sm-9" style={{margin:0}}>{prod.fullDesc}</p>
 								</div>
 							</li>

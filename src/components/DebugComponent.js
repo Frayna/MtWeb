@@ -11,7 +11,6 @@ export default class DebugComponent extends Component {
 	componentDidMount(){
 		axios.get('http://localhost:4200/product/list')
 			.then(response => {
-				console.log("lalala",response);
 				this.setState({ products: response.data });
 			})
 			.catch(function (error) {
@@ -20,6 +19,7 @@ export default class DebugComponent extends Component {
 	}
 	tabRow(){
 		return this.state.products.map(function(object, i){
+			console.table(object);
 			return <ProdTableRow obj={object} key={i} />;
 		});
 	}

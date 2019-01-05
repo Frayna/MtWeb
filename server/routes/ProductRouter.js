@@ -39,7 +39,7 @@ ProductRouter.route('/edit/:id').get(function (req, res) {
 ProductRouter.route('/update/:id').post(function (req, res) {
 	Product.findById(req.params.id, function(err, product) {
 		if (!product)
-			return next(new Error('Could not load Document'));
+			return (new Error('Could not load Document'));
 		else {
 			// do your updates here
 			product.name = req.body.name;

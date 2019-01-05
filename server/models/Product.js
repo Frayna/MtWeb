@@ -1,5 +1,3 @@
-// ServerPort.js
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -14,7 +12,7 @@ var Product = new Schema({
 	dangerosite: {type: String},
 	vente: {type: Boolean},
 	venteFR: {type: Boolean},
-	wiki: {type: Array},
+	wiki: {type: String},
 	descFull: {type: String}
 
 },{

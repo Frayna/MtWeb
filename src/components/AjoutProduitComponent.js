@@ -57,7 +57,7 @@ export default class AjoutProduitComponent extends Component {
 			dangerosite: "Safe",
 			vente: false,
 			venteFR: false,
-			wiki: [],
+			wiki: "",
 			descFull:   "-Effets Attendus : \n\n" +
 						"-Effets Indesirables : \n\n" +
 			 			"-Risques : \n\n" +
@@ -86,11 +86,11 @@ export default class AjoutProduitComponent extends Component {
 	onChangeDangerosite(e) {
 		this.setState({dangerosite: e.target.value});
 	}
-	onChangeVente(e) {
-		this.setState({vente: e.target.value});
+	onChangeVente() {
+		this.setState({vente: !this.state.vente});
 	}
-	onChangeVenteFR(e) {
-		this.setState({venteFR: e.target.value});
+	onChangeVenteFR() {
+		this.setState({venteFR: !this.state.venteFR});
 	}
 	onChangeWiki(e) {
 		this.setState({wiki: e.target.value});
@@ -128,7 +128,7 @@ export default class AjoutProduitComponent extends Component {
 			dangerosite: "Safe",
 			vente: false,
 			venteFR: false,
-			wiki: [],
+			wiki: "",
 			descFull:   "-Effets Attendus : \n\n" +
 			 		    "-Effets Indesirables : \n\n" +
 			 		    "-Risques : \n\n" +
@@ -148,15 +148,15 @@ export default class AjoutProduitComponent extends Component {
 					</div>
 					<div className="form-group">
 						<label>Descriptif</label>
-						<input type="text" value={this.state.desc} className="form-control"/>
+						<input type="text" onChange={this.onChangeDesc} value={this.state.desc} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Molécule</label>
-						<input type="text" value={this.state.molecule} className="form-control"/>
+						<input type="text" onChange={this.onChangeMolecule} value={this.state.molecule} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Principe actif</label>
-						<input type="text" value={this.state.principe} className="form-control"/>
+						<input type="text" onChange={this.onChangePrincipe} value={this.state.principe} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Voie</label>
@@ -168,31 +168,31 @@ export default class AjoutProduitComponent extends Component {
 					</div>
 					<div className="form-group">
 						<label>Dangerosité</label>
-						<select value={this.state.dangerosite}>
+						<select onChange={this.onChangeDangerosite} value={this.state.dangerosite}>
 							<option>Safe</option>
 							<option>Douteux</option>
 							<option>Dangeureux</option>
 						</select>
 					</div>
 					<div className="form-group checkbox">
-						<label><input type="checkbox" checked={this.state.vente}/>Disponible</label>
+						<label><input type="checkbox" onChange={this.onChangeVente} checked={this.state.vente}/>Disponible</label>
 					</div>
 					<div className="form-group checkbox">
-						<label><input type="checkbox" checked={this.state.venteFR}/>En France</label>
+						<label><input type="checkbox" onChange={this.onChangeVenteFR} checked={this.state.venteFR}/>En France</label>
 					</div>
 					<div className="form-group">
 						<label>Wiki</label>
-						<input type="text" value={this.state.wiki} className="form-control"/>
+						<input type="text" onChange={this.onChangeWiki} value={this.state.wiki} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Descriptif Complet</label>
-						<textarea type="text" value={this.state.descFull} className="form-control"/>
+						<textarea type="text" onChange={this.onChangeDescFull} value={this.state.descFull} className="form-control"/>
+					</div>
+					<div className="form-group">
+						<input type="submit" value="Upload" className="btn btn-primary"/>
 					</div>
 				</form>
 			</div>
-
-
-
 		)
 	}
 }
