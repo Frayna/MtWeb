@@ -51,6 +51,7 @@ export default class EditComponent extends Component {
 
 	showProd = () => {
 		return this.state.products.map((object, i) => {
+			console.log(object.descFull);
 				return <ProdTableRow obj={object} key={i}/>;
 		});
 	};

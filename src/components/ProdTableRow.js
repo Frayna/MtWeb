@@ -18,6 +18,15 @@ class ProdTableRow extends Component {
 		if (this.props.show === true)
 			this.props.show = true;
 	}
+	markup() {
+		// transforme \n en <p>
+		let narray = this.props.obj.descFull.split("\n");
+		console.log(narray);
+		return(narray.map(
+		(object, i) => {
+			return <p>{object}</p>;
+		}));
+	}
 
 	render() {
 		return (
@@ -47,7 +56,7 @@ class ProdTableRow extends Component {
 					<li>{this.props.obj.vente}</li>
 					<li>{this.props.obj.venteFR}</li>
 					<li>{this.props.obj.wiki}</li>
-					<li>{this.props.obj.descFull}</li>
+					{this.markup()}
 				</ul>
 			</div>
 

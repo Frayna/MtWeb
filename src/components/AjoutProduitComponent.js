@@ -58,10 +58,10 @@ export default class AjoutProduitComponent extends Component {
 			vente: false,
 			venteFR: false,
 			wiki: "",
-			descFull:   "-Effets Attendus : \n\n" +
-						"-Effets Indesirables : \n\n" +
-			 			"-Risques : \n\n" +
-			 			"-Description : "
+			descFull:`-Effets Attendus : 
+-Effets Indesirables : 
+-Risques : 
+-Description : `
 		}
 	}
 
@@ -129,10 +129,10 @@ export default class AjoutProduitComponent extends Component {
 			vente: false,
 			venteFR: false,
 			wiki: "",
-			descFull:   "-Effets Attendus : \n\n" +
-			 		    "-Effets Indesirables : \n\n" +
-			 		    "-Risques : \n\n" +
-			 		    "-Description : "
+			descFull: `-Effets Attendus : 
+-Effets Indesirables : 
+-Risques : 
+-Description : `
 		})
 	}
 
