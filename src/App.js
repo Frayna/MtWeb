@@ -9,6 +9,11 @@ import BDDComponent from "./components/BDDComponent";
 import RessourcesComponent from "./components/RessourcesComponent";
 import DebugComponent from "./components/DebugComponent";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import {faSyringe, faTablets, faAllergies, faCheckCircle, faTimesCircle, faExclamationCircle, faDollarSign, faSquare, faTimes, faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
+library.add(fab, faSyringe, faTablets, faAllergies, faCheckCircle, faTimesCircle, faExclamationCircle, faDollarSign, faSquare, faTimes, faEdit, faTrash);
+
 class App extends Component {
     render() {
         return (
@@ -31,7 +36,7 @@ class App extends Component {
                                     <Link to={'/admin'} className="nav-link" data-toggle="dropdown">Administratif</Link>
                                  </li>
                                 <li className="nav-item">
-                                    <Link to={'/bdd'} className="nav-link">Base de Données</Link>
+                                    <Link to={'/bdd'} className="nav-link">Practiciens</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to={'/ressource'} className="nav-link">Ressources</Link>

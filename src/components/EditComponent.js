@@ -3,17 +3,25 @@ import React, { Component } from 'react';
 import AjoutProduitComponent from "./AjoutProduitComponent";
 import axios from "axios";
 import ProdTableRow from "./ProdTableRow";
+import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 
 export default class EditComponent extends Component {
 	showAdd = false;
 	constructor(props) {
 		super(props);
 		this.state = {
+			addProductModal:false,
 			products: [],
 			prodLongDesc : [],
-			addShow : true
 		}
+
+        this.toggle = this.toggle.bind(this);
 	}
+
+    toggle() {
+        this.setState({addProductModal: !this.state.addProductModal});
+    }
+
 	// constructor()
 	// {
 	//     super();
@@ -44,11 +52,6 @@ export default class EditComponent extends Component {
 		}
 	};
 
-	handleAdd = () => {
-//		this.state.addShow = !this.state.addShow;
-		this.setState({addShow: !this.state.addShow})
-	};
-
 	showProd = () => {
 		return this.state.products.map((object, i) => {
 			console.log(object.descFull);
@@ -62,10 +65,13 @@ export default class EditComponent extends Component {
 				<div style={{marginTop: 50}}>
 						{this.showProd()}
 				</div>
-				<button onClick={this.handleAdd} className="btn btn-outline-primary" style={{float:"right"}}>+</button>
-				<div hidden={this.state.addShow}>
-					<AjoutProduitComponent/>
-				</div>
+				<button onClick={this.toggle} className="btn btn-outline-primary" style={{float:"right"}}>+</button>
+                <Modal isOpen={this.state.addProductModal} toggle={this.toggle} className="modal-dialog modal-lg">
+					<ModalHeader toggle={this.toggle}>Add New Product</ModalHeader>
+                    <ModalBody>
+                        <AjoutProduitComponent/>
+					</ModalBody>
+                </Modal>
 			</div>
 		)
 	}

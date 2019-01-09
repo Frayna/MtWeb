@@ -114,7 +114,7 @@ export default class AjoutProduitComponent extends Component {
 			venteFR: this.state.venteFR,
 			wiki: this.state.wiki,
 			descFull: this.state.descFull
-		}
+		};
 		axios.post('http://localhost:4200/product/add', product)
 			.then(res => console.log(res.data));
 		this.setState({
@@ -123,7 +123,7 @@ export default class AjoutProduitComponent extends Component {
 			desc: "",
 			molecule: "",
 			principe: "",
-			// TODO basuler voie et dangerosite en int
+			// TODO basculer voie et dangerosite en int
 			voie: "Trandermique",
 			dangerosite: "Safe",
 			vente: false,
@@ -135,17 +135,20 @@ export default class AjoutProduitComponent extends Component {
 -Description : `
 		})
 	}
-
+	// TODO Minimum fields requested
 
 	render() {
 		return (
-			<div style={{marginTop: 50}}>
-				<h3>Add New Product</h3>
+			<div>
 				<form onSubmit={this.onSubmit}>
 					<div className="form-group">
 						<label>Nom du Produit</label>
 						<input type="text" onChange={this.onChangeName} value={this.state.name} className="form-control"/>
 					</div>
+                    <div className="form-group">
+                        <label>Image</label>
+                        <input type="text" onChange={this.onChangeImg} value={this.state.img} className="form-control"/>
+                    </div>
 					<div className="form-group">
 						<label>Descriptif</label>
 						<input type="text" onChange={this.onChangeDesc} value={this.state.desc} className="form-control"/>
@@ -186,7 +189,7 @@ export default class AjoutProduitComponent extends Component {
 					</div>
 					<div className="form-group">
 						<label>Descriptif Complet</label>
-						<textarea type="text" onChange={this.onChangeDescFull} value={this.state.descFull} className="form-control"/>
+						<textarea rows="6" type="text" onChange={this.onChangeDescFull} value={this.state.descFull} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<input type="submit" value="Upload" className="btn btn-primary"/>

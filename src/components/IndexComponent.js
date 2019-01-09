@@ -106,14 +106,19 @@ export default class IndexComponent extends Component {
                 className:"btn btn-outline-primary btn-sm",
                 text:"More..."
             },
+            topDiv:{
+                className:"col-xs-12 col-sm-12 col-md-6 col-lg-4",
+                style:{
+                    display:"inline-block",
+                    verticalAlign:"top",
+                }
+            },
             global:{
-                margin:"1.6%",
-                width:"30%",
+                margin:"10px",
+                padding:0,
                 height:"400px",
-                display:"inline-block",
-                verticalAlign:"top",
                 border:"1px solid #AAA",
-                borderRadius:"20px"
+                borderRadius:"20px",
             },
             img:{
                 margin:0,
@@ -158,22 +163,28 @@ export default class IndexComponent extends Component {
                 paddingLeft:"15px",
                 paddingRight:"25px"
             },
+            topDiv:{
+                className:"container",
+                style:{
+                    backgroundColor:"#FFF",
+                    position:"fixed",
+                    top:56,
+                    width:"100%",
+                    height:"90%",
+                    overflow:"auto",
+                    verticalAlign:"center",
+                    zIndex:"1000",
+                }
+            },
             buttonParam:{
                 className:"btn btn-danger btn-sm",
                 text:"Close"
             },
             global:{
-                backgroundColor:"#FFF",
-                display:"block",
-                marginLeft:"20.85%",
-                position:"fixed",
                 paddingTop:"10px",
-                top:56,
-                left:0,
-                width:"58.35%",
-                height:"90%",
+                width:"100%",
+                height:"100%",
                 overflow:"auto",
-                verticalAlign:"center",
             },
             img:{
                 margin:0,
@@ -200,8 +211,8 @@ export default class IndexComponent extends Component {
             },
             buttonDiv:{
                 position:"fixed",
-                top:"70px",
-                right:"450px",
+                top:"10px",
+                right:"20px",
             },
             button:{
                 float:"right",
@@ -258,17 +269,19 @@ export default class IndexComponent extends Component {
     showArticle() {
         return(this.state.content.map((object, i) => {
             return(
-                <div key={i} style={(this.isOpen(i)).global}>
-                    <img src={object.img} style={this.isOpen(i).img}/>
-                    <div style={this.isOpen(i).div}>
-                        <h5 style={this.isOpen(i).h5}>{object.title}</h5>
-                        <p style={this.isOpen(i).p}>{object.desc}</p>
-                        <div style={this.isOpen(i).buttonDiv}>
-                            <button onClick={() => this.onClickMore(object, i)} type="button" className={(this.isOpen(i)).buttonParam.className} style={this.style.button}>{this.isOpen(i).buttonParam.text}</button>
+                    <div className={(this.isOpen(i)).topDiv.className} style={this.isOpen(i).topDiv.style}>
+                        <div key={i} style={(this.isOpen(i)).global}>
+                            <img src={object.img} style={this.isOpen(i).img}/>
+                            <div style={this.isOpen(i).div}>
+                                <h5 style={this.isOpen(i).h5}>{object.title}</h5>
+                                <p style={this.isOpen(i).p}>{object.desc}</p>
+                                <div style={this.isOpen(i).buttonDiv}>
+                                    <button onClick={() => this.onClickMore(object, i)} type="button" className={(this.isOpen(i)).buttonParam.className} style={this.style.button}>{this.isOpen(i).buttonParam.text}</button>
+                                </div>
+                            </div>
+                            <p style={this.isOpen(i).fullDesc}>{object.fullDesc}</p>
                         </div>
                     </div>
-                    <p style={this.isOpen(i).fullDesc}>{object.fullDesc}</p>
-                </div>
             );
         }));
     };
