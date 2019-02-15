@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -87,7 +86,7 @@ class ProdTableRow extends Component {
                 </div>
                 <div hidden={this.state.show} className="row" style={{borderTopStyle:"solid", borderTopWidth:1, borderTopColor:"#D2D2D2"}}>
                     <div className="col-sm-3" style={{padding:0, margin:0, borderRight:"1px solid #AAA"}}>
-                        <img src={this.props.obj.img} style={{width:"100%"}}/>
+                        <img alt="" src={this.props.obj.img} style={{width:"100%"}}/>
                         <div style={{padding:"10px", fontFamily:"courier", fontWeight:"bold"}}>
                             {this.props.obj.molecule}<br />
                             {this.props.obj.principe}<br />

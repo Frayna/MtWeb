@@ -271,7 +271,7 @@ export default class IndexComponent extends Component {
             return(
                     <div className={(this.isOpen(i)).topDiv.className} style={this.isOpen(i).topDiv.style}>
                         <div key={i} style={(this.isOpen(i)).global}>
-                            <img src={object.img} style={this.isOpen(i).img}/>
+                            <img alt="" src={object.img} style={this.isOpen(i).img}/>
                             <div style={this.isOpen(i).div}>
                                 <h5 style={this.isOpen(i).h5}>{object.title}</h5>
                                 <p style={this.isOpen(i).p}>{object.desc}</p>

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import AjoutProduitComponent from "./AjoutProduitComponent";
 import axios from "axios";
 import ProdTableRow from "./ProdTableRow";
+import SearchBar from "./SearchBar";
 import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 
 export default class EditComponent extends Component {
@@ -13,8 +14,8 @@ export default class EditComponent extends Component {
 			addProductModal:false,
 			products: [],
 			prodLongDesc : [],
+			prodKeys : [],
 		}
-
         this.toggle = this.toggle.bind(this);
 	}
 
@@ -59,9 +60,30 @@ export default class EditComponent extends Component {
 		});
 	};
 
+	getScroll = () => {
+		if(this.state.products.length){
+			let arr = Object.keys(this.state.products[0]);
+			console.table(arr);
+			return arr;
+		}
+		return [];
+	}
+	// getOptions = () => {
+	// 	let arr = []
+	// 	if(this.state.products[0])
+	// 		arr = Object.keys(this.state.products[0]);
+	// 	console.log(arr);
+	// 	return(arr.map((str) => {
+	// 		return<option>{str}</option>;
+	// 	}))
+	// }
+
 	render() {
 		return (
 			<div>
+				{/* SearchBar*/}
+				<SearchBar scrolldata={this.getScroll}/>
+				{/*Products*/}
 				<div style={{marginTop: 50}}>
 						{this.showProd()}
 				</div>
