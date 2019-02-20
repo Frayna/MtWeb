@@ -12,9 +12,11 @@ ProductRouter.route('/add').post(function (req, res) {
 	product.save()
 		.then(product => {
 			res.json('Product added successfully');
+			console.log("prod added");
 		})
 		.catch(err => {
 			res.status(400).send("unable to save to database");
+			console.log("prod error");
 		});
 });
 

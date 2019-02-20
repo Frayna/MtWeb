@@ -12,6 +12,7 @@ import DebugComponent from "./components/DebugComponent";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {faSyringe, faTablets, faAllergies, faCheckCircle, faTimesCircle, faExclamationCircle, faDollarSign, faSquare, faTimes, faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
+import RegisterComponent from "./components/RegisterComponent";
 library.add(fab, faSyringe, faTablets, faAllergies, faCheckCircle, faTimesCircle, faExclamationCircle, faDollarSign, faSquare, faTimes, faEdit, faTrash);
 
 class App extends Component {
@@ -44,6 +45,9 @@ class App extends Component {
 	                            <li className="nav-item">
 		                            <Link to={'/debug'} className="nav-link">Debug</Link>
 	                            </li>
+	                            <div style={{position:"absolute", right:0, inLine:"block"}} className="nav-item">
+		                            <Link to={'/register'} className="nav-link">Register</Link>
+	                            </div>
                             </ul>
                         </div>
                     </nav>
@@ -55,6 +59,7 @@ class App extends Component {
                         <Route path='/ressource' component={RessourcesComponent} />
                         <Route path='/index' component={IndexComponent} />
 	                    <Route path='/debug' component={DebugComponent} />
+	                    <Route path='/register' component={RegisterComponent} />
                     </Switch>
                 </div>
             </Router>
