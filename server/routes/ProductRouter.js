@@ -3,7 +3,6 @@
 const express = require('express');
 const app = express();
 const ProductRouter = express.Router();
-
 const Product = require('../models/Product');
 
 ProductRouter.route('/add').post(function (req, res) {
@@ -15,8 +14,13 @@ ProductRouter.route('/add').post(function (req, res) {
 			console.log("prod added");
 		})
 		.catch(err => {
-			res.status(400).send("unable to save to database");
-			console.log("prod error");
+			let b = {};
+			for(k in err.errors) {
+				b[k] = err.errors[k].kind;
+			}
+			console.log(req.connection.remoteAddress);
+			console.table(b);
+			res.status(400).send(b);
 		});
 });
 

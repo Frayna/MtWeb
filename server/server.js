@@ -1,6 +1,9 @@
 // server.js
 
 const express = require('express');
+var https = require ('https');
+var fs = require('fs');
+var http = require('http');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,6 +12,11 @@ const cors = require('cors');
 
 const config = require('./database/DB');
 const ProductRouter = require('./routes/ProductRouter');
+const UserRouter = require('./routes/UserRouter');
+
+var privateKey  = fs.readFileSync('./sslcert/server.key', 'utf8');
+var certificate = fs.readFileSync('./sslcert/server.cert', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 
 mongoose.connect(config.DB).then(
 	() => {console.log('Database is connected') },
@@ -16,12 +24,16 @@ mongoose.connect(config.DB).then(
 	});
 
 app.use(cors());
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/product', ProductRouter);
+app.use('/user', UserRouter);
+
+var httpsServer = https.createServer(credentials, app);
 
 
-app.listen(PORT, function(){
-    console.log('Server is running on Port: ',PORT);
+httpsServer.listen(PORT, function(){
+    console.log('Server HTTPS is running on Port: ',PORT);
 });

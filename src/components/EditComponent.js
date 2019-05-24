@@ -6,7 +6,10 @@ import ProdTableRow from "./ProdTableRow";
 import SearchBar from "./SearchBar";
 import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 
+const config = require("../config.json");
+
 export default class EditComponent extends Component {
+
 	showAdd = false;
 	constructor(props) {
 		super(props);
@@ -31,7 +34,10 @@ export default class EditComponent extends Component {
 	// TODO Passer les produits en sous components
 
 	componentDidMount(){
-		axios.get('http://localhost:4200/product/list')
+		const axiosConfig = {
+			headers: {'Access-Control-Allow-Origin': '*'}
+		};
+		axios.get('https://' + config.server + ':4200/product/list',axiosConfig)
 			.then(response => {
 				this.setState({ products: response.data });
 				this.setState({prodLongDesc: [this.state.products.length]})

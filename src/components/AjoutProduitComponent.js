@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from 'axios';
 
+const config = require("../config.json");
 export default class AjoutProduitComponent extends Component {
 
 	DangerEnum = {
@@ -115,7 +116,7 @@ export default class AjoutProduitComponent extends Component {
 			wiki: this.state.wiki,
 			descFull: this.state.descFull
 		};
-		axios.post('http://localhost:4200/product/add', product)
+		axios.post("https://" + config.server + ":4200/product/add", product)
 			.then(res => console.log(res.data));
 		this.setState({
 			name: "",

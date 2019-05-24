@@ -3,16 +3,15 @@ var Schema = mongoose.Schema;
 
 // Define collection and schema for Items
 var User = new Schema({
-	id: {type: Number},
-	FirstName: {type: String},
-	LastName: {type: String},
-	Pseudo: {type: String},
-	Mail: {type: String},
-	Passwd: {type: String},
-	Token: {type: String},
-	TokenExp: {type: Date},
+	FirstName: 	{type: String, required:true},
+	LastName: 	{type: String, required:true},
+	Pseudo: 	{type: String, required:true},
+	Mail: 		{type: String, required:true},
+	Passwd: 	{type: String, required:true},
+	Token: 		{type: String},
+	TokenExp: 	{type: Date}
 },{
-	collection: 'articles'
+	collection: 'users'
 });
 
 module.exports = mongoose.model('User', User);
