@@ -16,8 +16,7 @@ export default class RegisterComponent extends Component {
 		this.log = this.log.bind(this);
 
 		this.state = {
-			name: "",
-			firstname: "",
+			login: "",
 			pseudo: "",
 			mail: "",
 			confirmmail: "",
@@ -30,7 +29,7 @@ export default class RegisterComponent extends Component {
 		this.setState({name: e.target.value});
 	}
 	onChangeFirstName(e) {
-		this.setState({firstname: e.target.value});
+		this.setState({login: e.target.value});
 	}
 	onChangePseudo(e) {
 		this.setState({pseudo: e.target.value});
@@ -56,18 +55,17 @@ export default class RegisterComponent extends Component {
 		const hash = crypto.createHash('sha256');
 		console.log(hash.update('test').digest('hex'));
 		const user = {
-			name : this.state.name,
-			firstname : this.state.firstname,
+			login : this.state.login,
 			pseudo : this.state.pseudo,
+			passwd : this.state.passwd,
 			mail : this.state.mail
 		};
 
-		axios.post("http://" + config.server + ":4200/user/add", user)
+		axios.post("https://" + config.server + ":4200/user/add", user)
 			.then(res => {
 				console.log(res.data);
 				this.setState({
-					name: "",
-					firstname: "",
+					login: "",
 					pseudo: "",
 					mail: "",
 					confirmmail: "",
@@ -87,13 +85,8 @@ export default class RegisterComponent extends Component {
 			<div>
 				<form onSubmit={this.onSubmit}>
 					<div className="form-group">
-						<label>Nom</label>
-						<input type="text" onChange={this.onChangeName} value={this.state.name} className="form-control"/>
-					</div>
-
-					<div className="form-group">
-						<label>Prénom</label>
-						<input type="text" onChange={this.onChangeFirstName} value={this.state.firstname} className="form-control"/>
+						<label>Login</label>
+						<input type="text" onChange={this.onChangeFirstName} value={this.state.login} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Pseudo</label>
