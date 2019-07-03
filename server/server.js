@@ -13,6 +13,7 @@ const cors = require('cors');
 const config = require('./database/DB');
 const ProductRouter = require('./routes/ProductRouter');
 const UserRouter = require('./routes/UserRouter');
+const TestRouter = require('./routes/TestRouter');
 
 var privateKey  = fs.readFileSync('./sslcert/server.key', 'utf8');
 var certificate = fs.readFileSync('./sslcert/server.cert', 'utf8');
@@ -30,7 +31,7 @@ app.use(bodyParser.json());
 
 app.use('/product', ProductRouter);
 app.use('/user', UserRouter);
-
+app.use('/test', TestRouter);
 var httpsServer = https.createServer(credentials, app);
 
 

@@ -51,9 +51,6 @@ export default class RegisterComponent extends Component {
 	}
 	onSubmit(e) {
 		e.preventDefault();
-		const crypto = require('crypto');
-		const hash = crypto.createHash('sha256');
-		console.log(hash.update('test').digest('hex'));
 		const user = {
 			login : this.state.login,
 			pseudo : this.state.pseudo,
@@ -102,11 +99,11 @@ export default class RegisterComponent extends Component {
 					</div>
 					<div className="form-group">
 						<label>Mot de passe</label>
-						<input type="text" onChange={this.onChangePasswd} value={this.state.passwd} className="form-control"/>
+						<input type="password" onChange={this.onChangePasswd} value={this.state.passwd} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Confirmez Mot de passe</label>
-						<input type="text" onChange={this.onChangeConfirmPasswd} value={this.state.confirmpasswd} className="form-control"/>
+						<input type="password" onChange={this.onChangeConfirmPasswd} value={this.state.confirmpasswd} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<input type="submit" value="Register" className="btn btn-primary"/>
