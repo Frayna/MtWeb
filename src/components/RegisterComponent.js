@@ -61,6 +61,7 @@ export default class RegisterComponent extends Component {
 		axios.post("https://" + config.server + ":4200/user/add", user)
 			.then(res => {
 				console.log(res.data);
+				alert("Merci de valider votre compte");
 				this.setState({
 					login: "",
 					pseudo: "",
@@ -71,6 +72,8 @@ export default class RegisterComponent extends Component {
 				})
 			})
 			.catch(err => {
+
+				alert(JSON.stringify(err.response.data));
 				console.log(err);
 				console.log(err.response.data)
 			})

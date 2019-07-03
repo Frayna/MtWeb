@@ -2,11 +2,10 @@ const express = require('express');
 const app = express();
 const UserRouter = express.Router();
 const User = require('../models/User');
-const crypto = require('crypto');
-const hash = crypto.createHash('sha256');
+
 
 UserRouter.route('/add').post(function (req, res) {
-    req.body.passwd = hash.update(req.body.passwd).digest('hex');
+    req.body.passwd = require('crypto').createHash('sha256').update(req.body.passwd).digest('hex');
     const user = new User(req.body);
     console.log("adding");
     user.save()
