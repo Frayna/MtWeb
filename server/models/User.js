@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 
 // Define collection and schema for Items
 var User = new Schema({
-	login: 		{type: String, required:true},
 	pseudo: 	{type: String, required:true},
 	mail: 		{type: String, required:true},
+	activation: {type: String, required:true},
 	passwd: 	{type: String, required:true},
 	Token: 		{type: String},
 	TokenExp: 	{type: Date}

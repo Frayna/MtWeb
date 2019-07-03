@@ -5,8 +5,6 @@ var config = require("../config.json");
 export default class RegisterComponent extends Component {
 	constructor(props) {
 		super(props);
-		this.onChangeName = this.onChangeName.bind(this);
-		this.onChangeFirstName = this.onChangeFirstName.bind(this);
 		this.onChangePseudo = this.onChangePseudo.bind(this);
 		this.onChangeMail = this.onChangeMail.bind(this);
 		this.onChangeConfirmMail = this.onChangeConfirmMail.bind(this);
@@ -16,7 +14,6 @@ export default class RegisterComponent extends Component {
 		this.log = this.log.bind(this);
 
 		this.state = {
-			login: "",
 			pseudo: "",
 			mail: "",
 			confirmmail: "",
@@ -24,12 +21,6 @@ export default class RegisterComponent extends Component {
 			confirmpasswd: "",
 			log:""
 		}
-	}
-	onChangeName(e) {
-		this.setState({name: e.target.value});
-	}
-	onChangeFirstName(e) {
-		this.setState({login: e.target.value});
 	}
 	onChangePseudo(e) {
 		this.setState({pseudo: e.target.value});
@@ -52,7 +43,6 @@ export default class RegisterComponent extends Component {
 	onSubmit(e) {
 		e.preventDefault();
 		const user = {
-			login : this.state.login,
 			pseudo : this.state.pseudo,
 			passwd : this.state.passwd,
 			mail : this.state.mail
@@ -63,7 +53,6 @@ export default class RegisterComponent extends Component {
 				console.log(res.data);
 				alert("Merci de valider votre compte");
 				this.setState({
-					login: "",
 					pseudo: "",
 					mail: "",
 					confirmmail: "",
@@ -85,20 +74,16 @@ export default class RegisterComponent extends Component {
 			<div>
 				<form onSubmit={this.onSubmit}>
 					<div className="form-group">
-						<label>Login</label>
-						<input type="text" onChange={this.onChangeFirstName} value={this.state.login} className="form-control"/>
-					</div>
-					<div className="form-group">
-						<label>Pseudo</label>
-						<input type="text" onChange={this.onChangePseudo} value={this.state.pseudo} className="form-control"/>
-					</div>
-					<div className="form-group">
 						<label>Mail</label>
 						<input type="text" onChange={this.onChangeMail} value={this.state.mail} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Confirmez Mail</label>
 						<input type="text" onChange={this.onChangeConfirmMail} value={this.state.confirmmail} className="form-control"/>
+					</div>
+					<div className="form-group">
+						<label>Pseudo</label>
+						<input type="text" onChange={this.onChangePseudo} value={this.state.pseudo} className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Mot de passe</label>
