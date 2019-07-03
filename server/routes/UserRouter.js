@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const UserRouter = express.Router();
 const User = require('../models/User');
 const uniqid = require('uniqid');
@@ -29,7 +28,11 @@ UserRouter.route('/add').post(function (req, res) {
                 // should be replaced with real recipient's account
                 to: user.mail,
                 subject: "Acitvation de votre compte",
-                html: "https://localhost:3000/activation?mail=" + user.mail + "&code=" + user.activation
+                //TODO mettre adresse serveur
+                html: '<div>' +
+                    '<div>Votre code : ' + user.activation + ' </div>' +
+                    'https://localhost:3000/activate' +
+                    '</div>'
             };
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
