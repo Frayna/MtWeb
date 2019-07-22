@@ -1,16 +1,15 @@
-
 import React, { Component } from 'react';
 import AjoutProduitComponent from "./AjoutProduitComponent";
 import axios from "axios";
 import ProdTableRow from "./ProdTableRow";
-import SearchBar from "./SearchBar";
 import { Modal, ModalHeader, ModalBody} from 'reactstrap';
+import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const config = require("../config.json");
 
 export default class EditComponent extends Component {
 
-	showAdd = false;
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -26,13 +25,6 @@ export default class EditComponent extends Component {
         this.setState({addProductModal: !this.state.addProductModal});
     }
 
-	// constructor()
-	// {
-	//     super();
-	//     this.handleshow = this.handleshow().bind(this);
-	// }
-	// TODO Passer les produits en sous components
-
 	componentDidMount(){
 		const axiosConfig = {
 			headers: {'Access-Control-Allow-Origin': '*'}
@@ -47,48 +39,16 @@ export default class EditComponent extends Component {
 			})
 	}
 
-	handleshow = (id) => {
-		let newArray = this.state.prodLongDesc.slice();
-		if(newArray[id]){
-			newArray[id] = !newArray[id];
-			this.setState({prodLongDesc: newArray});
-		}
-		else {
-			newArray[id] = true;
-			this.setState({prodLongDesc: newArray});
-		}
-	};
-
 	showProd = () => {
 		return this.state.products.map((object, i) => {
-			console.log(object.descFull);
-				return <ProdTableRow obj={object} key={i}/>;
+			return <ProdTableRow obj={object} key={i}/>;
 		});
 	};
-
-	getScroll = () => {
-		if(this.state.products.length){
-			let arr = Object.keys(this.state.products[0]);
-			console.table(arr);
-			return arr;
-		}
-		return [];
-	}
-	// getOptions = () => {
-	// 	let arr = []
-	// 	if(this.state.products[0])
-	// 		arr = Object.keys(this.state.products[0]);
-	// 	console.log(arr);
-	// 	return(arr.map((str) => {
-	// 		return<option>{str}</option>;
-	// 	}))
-	// }
 
 	render() {
 		return (
 			<div>
 				{/* SearchBar*/}
-				<SearchBar scrolldata={this.getScroll}/>
 				{/*Products*/}
 				<div style={{marginTop: 50}}>
 						{this.showProd()}

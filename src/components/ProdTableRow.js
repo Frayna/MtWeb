@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    ExpansionPanel,
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
+    Typography,
+    Grid,
+    Box,
+    Hidden
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 class ProdTableRow extends Component {
     constructor(props) {
@@ -66,54 +76,56 @@ class ProdTableRow extends Component {
 
     render() {
         return (
-            <div style={{border:"1px solid #D2D2D2", borderRadius:"20px", padding:"15px"}}>
-                <div className="row">
-                    <h5 className="col-sm-3">{this.props.obj.name}</h5>
-                    <p className="col-sm-6">{this.props.obj.desc}</p>
-                    <div className="col-sm-3" style={{float:"right"}}>
-                        <FontAwesomeIcon hidden={!this.state.show} style={{minWidth:"40px", color:"#555", margin:"5px"}} icon={this.voieIcon(this.props.obj.voie)} size="2x" transform={"up-1"}/>
-                        <FontAwesomeIcon hidden={!this.state.show} style={{minWidth:"40px", color:this.dangerIcon(this.props.obj.dangerosite).col,  margin:"5px"}} icon={this.dangerIcon(this.props.obj.dangerosite).icon} size="2x"/>
-                        <span hidden={!this.state.show} className="fa-layers fa-fw" style={{minWidth:"40px", margin:"5px"}} size="2x">
-                            <FontAwesomeIcon style={{color:"#85bb65"}} icon="dollar-sign" size="2x" transform={"up-3"}/>
-                            {this.props.obj.vente === false && <FontAwesomeIcon style={{color:"#D55", opacity:"0.8"}} icon="times" size="2x" transform={"up-3"}/>}
-                        </span>
-                        <span hidden={!this.state.show} className="fa-layers fa-fw" style={{minWidth:"40px", margin:"5px"}}>
-                            <FontAwesomeIcon style={{color:"#55D"}} icon="square" size="2x" transform={"up-3"}/>
-                            {this.props.obj.venteFR === false && <FontAwesomeIcon style={{color:"#D55", opacity:"0.8"}} icon="times" size="2x" transform={"up-3"}/>}
-                        </span>
-                        <button className="btn" style={{float:"right"}} onClick={this.onShow}>{'\u25bc'}</button>
-                    </div>
-                </div>
-                <div hidden={this.state.show} className="row" style={{borderTopStyle:"solid", borderTopWidth:1, borderTopColor:"#D2D2D2"}}>
-                    <div className="col-sm-3" style={{padding:0, margin:0, borderRight:"1px solid #AAA"}}>
-                        <img alt="" src={this.props.obj.img} style={{width:"100%"}}/>
-                        <div style={{padding:"10px", fontFamily:"courier", fontWeight:"bold"}}>
-                            {this.props.obj.molecule}<br />
-                            {this.props.obj.principe}<br />
-                            <FontAwesomeIcon style={{minWidth:"40px", color:"#555", margin:"5px"}} icon={this.voieIcon(this.props.obj.voie)} size="2x" transform={"up-1"}/>
-                            <FontAwesomeIcon style={{minWidth:"40px", color:this.dangerIcon(this.props.obj.dangerosite).col,  margin:"5px"}} icon={this.dangerIcon(this.props.obj.dangerosite).icon} size="2x"/>
-                            <span className="fa-layers fa-fw" style={{minWidth:"40px", margin:"5px"}} size="2x">
+            <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                    <Grid container spacing={0}>
+                        <Grid item xs={4} sm={4} md={3}><Typography>{this.props.obj.name}</Typography></Grid>
+                        <Grid item xs={8} sm={8} md={6}><Typography>{this.props.obj.desc}</Typography></Grid>
+                        <Hidden smDown><Grid item xs={0} sm={0} md={3}>
+                            <FontAwesomeIcon hidden={!this.state.show} style={{minWidth:"40px", color:"#555", margin:"5px"}} icon={this.voieIcon(this.props.obj.voie)} size="2x" transform={"up-1"}/>
+                            <FontAwesomeIcon hidden={!this.state.show} style={{minWidth:"40px", color:this.dangerIcon(this.props.obj.dangerosite).col,  margin:"5px"}} icon={this.dangerIcon(this.props.obj.dangerosite).icon} size="2x"/>
+                            <Box component={"span"}>
                                 <FontAwesomeIcon style={{color:"#85bb65"}} icon="dollar-sign" size="2x" transform={"up-3"}/>
                                 {this.props.obj.vente === false && <FontAwesomeIcon style={{color:"#D55", opacity:"0.8"}} icon="times" size="2x" transform={"up-3"}/>}
-                            </span>
-                            <span className="fa-layers fa-fw" style={{minWidth:"40px", margin:"5px"}}>
+                            </Box>
+                            <Box component={"span"}>
                                 <FontAwesomeIcon style={{color:"#55D"}} icon="square" size="2x" transform={"up-3"}/>
                                 {this.props.obj.venteFR === false && <FontAwesomeIcon style={{color:"#D55", opacity:"0.8"}} icon="times" size="2x" transform={"up-3"}/>}
+                            </Box>
+                        </Grid></Hidden>
+                    </Grid>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <Grid container spacing={0}>
+                        <div className="col-sm-3" style={{padding:0, margin:0, borderRight:"1px solid #AAA"}}>
+                            <img alt="" src={this.props.obj.img} style={{width:"100%"}}/>
+                            <div style={{padding:"10px", fontFamily:"courier", fontWeight:"bold"}}>
+                                {this.props.obj.molecule}<br />
+                                {this.props.obj.principe}<br />
+                                <FontAwesomeIcon style={{minWidth:"40px", color:"#555", margin:"5px"}} icon={this.voieIcon(this.props.obj.voie)} size="2x" transform={"up-1"}/>
+                                <FontAwesomeIcon style={{minWidth:"40px", color:this.dangerIcon(this.props.obj.dangerosite).col,  margin:"5px"}} icon={this.dangerIcon(this.props.obj.dangerosite).icon} size="2x"/>
+                                <span className="fa-layers fa-fw" style={{minWidth:"40px", margin:"5px"}} size="2x">
+                                <FontAwesomeIcon style={{color:"#85bb65"}} icon="dollar-sign" size="2x" transform={"up-3"}/>
+                                    {this.props.obj.vente === false && <FontAwesomeIcon style={{color:"#D55", opacity:"0.8"}} icon="times" size="2x" transform={"up-3"}/>}
                             </span>
-                            <br/>
-                            <a href={this.props.obj.wiki}><FontAwesomeIcon icon={['fab', 'wikipedia-w']}/></a>
-                            <div className="btn-group" style={{float:"right"}}>
-                                <button className="btn btn-primary"><FontAwesomeIcon icon="edit"/></button>
-                                <button onClick={this.delete} className="btn btn-danger"><FontAwesomeIcon icon="trash"/></button>
+                                <span className="fa-layers fa-fw" style={{minWidth:"40px", margin:"5px"}}>
+                                <FontAwesomeIcon style={{color:"#55D"}} icon="square" size="2x" transform={"up-3"}/>
+                                    {this.props.obj.venteFR === false && <FontAwesomeIcon style={{color:"#D55", opacity:"0.8"}} icon="times" size="2x" transform={"up-3"}/>}
+                            </span>
+                                <br/>
+                                <a href={this.props.obj.wiki}><FontAwesomeIcon icon={['fab', 'wikipedia-w']}/></a>
+                                <div className="btn-group" style={{float:"right"}}>
+                                    <button className="btn btn-primary"><FontAwesomeIcon icon="edit"/></button>
+                                    <button onClick={this.delete} className="btn btn-danger"><FontAwesomeIcon icon="trash"/></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-sm-9" style={{padding:"15px"}}>
-                        {this.markup()}
-                    </div>
-                </div>
-            </div>
-
+                        <div className="col-sm-9" style={{padding:"15px"}}>
+                            {this.markup()}
+                        </div>
+                    </Grid>
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
         );
     }
 }

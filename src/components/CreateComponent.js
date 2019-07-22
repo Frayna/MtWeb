@@ -1,24 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Container, Typography, TextField, FormControl, Button} from "@material-ui/core";
+import CheckIcon from "@material-ui/icons/Check";
 
-export default class CreateComponent extends Component {
-    render() {
-        return (
-            <div style={{marginTop: 50}}>
-                <h3>Ajouter nouvelle chirurgie</h3>
-                <form>
-                    <div className="form-group">
-                        <label>Nom</label>
-                        <input type="text" className="form-control"/>
-                    </div>
-                    <div className="form-group">
-                        <label>Descriptif</label>
-                        <input type="text" className="form-control"/>
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Ajouter Chirurgie" className="btn btn-primary"/>
-                    </div>
-                </form>
-            </div>
-        )
-    }
+export default function CreateComponent() {
+    return (
+        <Container>
+            <Typography component="h4" variant="h4">Ajouter nouvelle chirurgie</Typography>
+            <FormControl fullWidth={true}>
+                <TextField
+                    label="Nom"
+                    margin={"dense"}
+                />
+                <TextField
+                    label="Description"
+                    variant={"outlined"}
+                    multiline
+                    margin={"dense"}
+                />
+            </FormControl>
+            <Button variant="contained" color="secondary" size={"large"}>
+                Ajouter Chirurgie
+                <CheckIcon/>
+            </Button>
+        </Container>
+    )
 }
