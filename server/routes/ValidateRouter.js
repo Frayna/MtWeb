@@ -3,12 +3,13 @@ const ValidateRouter = express.Router();
 const User = require('../models/User');
 
 ValidateRouter.route('/').get(function (req, res) {
-	User.find({activation : req.query.code}, function (err, users) {
+	User.find({activation : req.body}, function (err, users) {
 		if (err){
 			console.log("error");
 			res.send(err);
 		}
-		console.log("activation", req.query.code);
+		//TODO créer modele membre et ajout BDD, cookie et connexion
+		console.log("activation", req.body);
 		console.log("result", users);
 		res.json(users);
 	});
