@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Typography, TextField, FormControl, Button} from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
 
-export default function CreateComponent() {
+export default function ChirurgiesComponent() {
     return (
         <Container>
             <Typography component="h4" variant="h4">Ajouter nouvelle chirurgie</Typography>

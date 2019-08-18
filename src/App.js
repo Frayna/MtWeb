@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import CreateComponent from './components/CreateComponent';
-import EditComponent from './components/EditComponent';
+import ChirugiesComponent from './components/ChirurgiesComponent';
+import HormonesComponent from './components/HormonesComponent';
 import IndexComponent from './components/IndexComponent';
 import AdminComponent from "./components/AdminComponent";
 import BDDComponent from "./components/BDDComponent";
@@ -71,8 +71,8 @@ class App extends Component {
                     <NavBarComponent />
                     <Container maxWidth={"xl"} style={{marginTop:92}}>
                         <Switch>
-                            <Route path='/create' component={CreateComponent} />
-                            <Route path='/edit' component={EditComponent} />
+                            <Route path='/chirurgies' component={ChirugiesComponent} />
+                            <Route path='/hormones' component={HormonesComponent} />
                             <Route path='/admin' component={AdminComponent} />
                             <Route path='/bdd' component={BDDComponent} />
                             <Route path='/ressource' component={RessourcesComponent} />

@@ -3,12 +3,10 @@ import AjoutProduitComponent from "./AjoutProduitComponent";
 import axios from "axios";
 import ProdTableRow from "./ProdTableRow";
 import { Modal, ModalHeader, ModalBody} from 'reactstrap';
-import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const config = require("../config.json");
 
-export default class EditComponent extends Component {
+export default class HormonesComponent extends Component {
 
 	constructor(props) {
 		super(props);

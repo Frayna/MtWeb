@@ -48,8 +48,8 @@ export default function NavBarComponent() {
             <Tabs centered variant="scrollable" value={value} onChange={handleChange}>
                 <Tab className={classes.home} component={Link} to={'/index'} label="MtWeb" textColor={"primary"} fullWidth={false} icon={<HomeIcon/>}/>
                 {/*<Tab className={classes.tabText} component={Link} to={'/index'} label="News / Infos"/>*/}
-                <Tab className={classes.tabText} component={Link} to={'/create'} label="Chirurgies"/>
-                <Tab className={classes.tabText} component={Link} to={'/edit'} label="Hormones"/>
+                <Tab className={classes.tabText} component={Link} to={'/chirurgies'} label="Chirurgies"/>
+                <Tab className={classes.tabText} component={Link} to={'/hormones'} label="Hormones"/>
                 <Tab className={classes.tabText} component={Link} to={'/admin'} label="Administratif"/>
                 <Tab className={classes.tabText} component={Link} to={'/bdd'} label="Practitiens"/>
                 <Tab className={classes.tabText} component={Link} to={'/ressources'} label="Ressources"/>
