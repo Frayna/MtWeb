@@ -27,7 +27,7 @@ export default class HormonesComponent extends Component {
 		const axiosConfig = {
 			headers: {'Access-Control-Allow-Origin': '*'}
 		};
-		axios.get('https://' + config.server + ':4200/product/list',axiosConfig)
+		axios.get('https://' + config.server + ':4200/product',axiosConfig)
 			.then(response => {
 				this.setState({ products: response.data });
 				this.setState({prodLongDesc: [this.state.products.length]})

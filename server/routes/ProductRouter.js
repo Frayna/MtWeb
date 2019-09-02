@@ -4,7 +4,7 @@ const app = express();
 const ProductRouter = express.Router();
 const Product = require('../models/Product');
 
-ProductRouter.route('/add').post(function (req, res) {
+ProductRouter.route('').post(function (req, res) {
 	const product = new Product(req.body);
 	console.log("adding");
 	product.save()
@@ -23,7 +23,7 @@ ProductRouter.route('/add').post(function (req, res) {
 		});
 });
 
-ProductRouter.route('/list').get(function (req, res) {
+ProductRouter.route('').get(function (req, res) {
 	Product.find(function (err, product){
 		if(err){
 			console.log(err);

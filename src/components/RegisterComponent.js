@@ -58,7 +58,7 @@ export default class RegisterComponent extends Component {
 			mail : this.state.mail
 		};
 
-		axios.post("https://" + config.server + ":4200/user/add", user)
+		axios.post("https://" + config.server + ":4200/user", user)
 			.then(res => {
 				console.log(res.data);
 				this.setState({

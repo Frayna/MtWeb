@@ -116,7 +116,7 @@ export default class AjoutProduitComponent extends Component {
 			wiki: this.state.wiki,
 			descFull: this.state.descFull
 		};
-		axios.post("https://" + config.server + ":4200/product/add", product)
+		axios.post("https://" + config.server + ":4200/product", product)
 			.then(res => console.log(res.data));
 		this.setState({
 			name: "",

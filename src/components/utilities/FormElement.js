@@ -48,18 +48,15 @@ export default function FormElement (props) {
 	}
 
 	function buildField () {
-		props.data.map(elem => {
+		return(props.data.map(elem => {
 			return (<div>
 				<InputLabel>{elem.question}</InputLabel>
 				{makeElemFromType(elem.type)}
-			</div>)});
+			</div>)}));
 	}
 
 	return<>
-			{props.data.map((e) =>
-			<div>{e.question}</div>
-			)}
-		{'test'}
+		{buildField()}
 		<Button variant="contained" className={classes.submit} onClick={f}>Log data</Button>
 	</>
 }
