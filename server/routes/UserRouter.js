@@ -5,7 +5,7 @@ const uniqid = require('uniqid');
 const nodeMailer = require("nodemailer");
 
 
-UserRouter.route('/add').post(function (req, res) {
+UserRouter.route('/').post(function (req, res) {
     req.body.passwd = require('crypto').createHash('sha256').update(req.body.passwd).digest('hex');
     const user = new User(req.body);
     user.activation = uniqid();
@@ -30,8 +30,7 @@ UserRouter.route('/add').post(function (req, res) {
                 subject: "Acitvation de votre compte",
                 //TODO mettre adresse serveur
                 html: '<div>' +
-                    '<div>Votre code : ' + user.activation + ' </div>' +
-                    'https://localhost:3000/activate' +
+                    'https://localhost:4200/validate?token=' + user.activation +
                     '</div>'
             };
             transporter.sendMail(mailOptions, (error, info) => {
@@ -55,7 +54,7 @@ UserRouter.route('/add').post(function (req, res) {
         });
 });
 UserRouter.route('').get(function (req,res) {
-    
+
 })
 
 
