@@ -1,16 +1,45 @@
 const express = require('express');
-const app = express();
 const UserRouter = express.Router();
 const User = require('../models/User');
+const uniqid = require('uniqid');
+const nodeMailer = require("nodemailer");
 
-UserRouter.route('').post(function (req, res) {
-    console.log("request : ", req.body);
+
+UserRouter.route('/add').post(function (req, res) {
     req.body.passwd = require('crypto').createHash('sha256').update(req.body.passwd).digest('hex');
     const user = new User(req.body);
-    console.log("request 2: ", req.body);
-    console.log("adding : ", user);
+    user.activation = uniqid();
+    console.log("adding");
     user.save()
         .then(user => {
+            let transporter = nodeMailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 465,
+                secure: true,
+                auth: {
+                    // should be replaced with real sender's account
+
+                    //TODO Securiser ça
+                    user: 'transgenre.eu.test@gmail.com',
+                    pass: 'jeflechat'
+                }
+            });
+            let mailOptions = {
+                // should be replaced with real recipient's account
+                to: user.mail,
+                subject: "Acitvation de votre compte",
+                //TODO mettre adresse serveur
+                html: '<div>' +
+                    '<div>Votre code : ' + user.activation + ' </div>' +
+                    'https://localhost:3000/activate' +
+                    '</div>'
+            };
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message %s sent: %s', info.messageId, info.response);
+            });
             res.json('User added successfully');
             console.log("User upload success !");
         })
