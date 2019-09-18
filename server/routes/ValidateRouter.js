@@ -12,6 +12,7 @@ ValidateRouter.route('').get(function (req, res) {
 		console.log("activation", req.body);
 		console.log("result", users);
 		res.json(users);
+//		res.redirect('https://localhost:3000/')
 	});
 //	let result = queryUser();
 //	console.log(result);

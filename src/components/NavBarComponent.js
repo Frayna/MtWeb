@@ -53,6 +53,7 @@ export default function NavBarComponent() {
                 <Tab className={classes.tabText} component={Link} to={'/admin'} label="Administratif"/>
                 <Tab className={classes.tabText} component={Link} to={'/bdd'} label="Practitiens"/>
                 <Tab className={classes.tabText} component={Link} to={'/ressources'} label="Ressources"/>
+                <Tab className={classes.tabText} component={Link} to={'/log'} label="Login/Register"/>
                 {/* <Tab component={Link} to={'/debug'} label="Debug"/> */}
             </Tabs>
         </AppBar>

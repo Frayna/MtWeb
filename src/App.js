@@ -8,7 +8,7 @@ import AdminComponent from "./components/AdminComponent";
 import BDDComponent from "./components/BDDComponent";
 import RessourcesComponent from "./components/RessourcesComponent";
 import DebugComponent from "./components/DebugComponent";
-import RegisterComponent from "./components/RegisterComponent";
+import LogComponent from "./components/LogComponent";
 
 import NavBarComponent from "./components/NavBarComponent";
 import Container from "@material-ui/core/Container";
@@ -68,8 +68,8 @@ class App extends Component {
         return (
             <Router>
                 <ThemeProvider theme={theme}>
-                    <NavBarComponent />
-                    <Container maxWidth={"xl"} style={{marginTop:92}}>
+                    <NavBarComponent style={{height:'10vh'}}/>
+                    <Container maxWidth={"xl"} style={{marginTop:92, height:'90vh'}}>
                         <Switch>
                             <Route path='/chirurgies' component={ChirugiesComponent} />
                             <Route path='/hormones' component={HormonesComponent} />
@@ -78,7 +78,7 @@ class App extends Component {
                             <Route path='/ressource' component={RessourcesComponent} />
                             <Route path='/index' component={IndexComponent} />
 	                        <Route path='/debug' component={DebugComponent} />
-	                        <Route path='/register' component={RegisterComponent} />
+                            <Route path='/log' component={LogComponent} />
                         </Switch>
                     </Container>
                 </ThemeProvider>
