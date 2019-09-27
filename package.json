@@ -15,6 +15,7 @@
     "bootstrap": "^4.2.1",
     "braces": "^2.3.2",
     "clsx": "^1.0.4",
+    "concurrently": "^4.1.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
@@ -30,7 +31,12 @@
   },
   "scripts": {
     "start": "set https=true&&react-scripts start",
+    "deploy": "npm run build&&npm run serve",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server\\server.js",
+    "client": "set https=true&&react-scripts start",
     "build": "react-scripts build",
+    "serve": "concurrently \"serve --ssl-cert \"sslcert/server.cert\" --ssl-key \"sslcert/server.key\" -s build \" \"npm run server\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

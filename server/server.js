@@ -16,8 +16,8 @@ const UserRouter = require('./routes/UserRouter');
 const TestRouter = require('./routes/TestRouter');
 const ValidateRouter = require('./routes/ValidateRouter');
 
-var privateKey  = fs.readFileSync('./sslcert/server.key', 'utf8');
-var certificate = fs.readFileSync('./sslcert/server.cert', 'utf8');
+var privateKey  = fs.readFileSync('../sslcert/server.key', 'utf8');
+var certificate = fs.readFileSync('../sslcert/server.cert', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
 mongoose.connect(config.DB).then(
